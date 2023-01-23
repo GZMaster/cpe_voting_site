@@ -8,8 +8,8 @@ import VotingPage from "../pages/voting/VotingPage";
 const NavConfig = () => {
   return (
     <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/login" element={<LoginPage />} />
+      {/* <Route path="/" element={<App />} /> */}
+      <Route path="/" element={<LoginPage />} />
       <Route path="/voting" element={<VotingPage />} />
       <Route path="/position" element={<PositionPages />} />
     </Routes>
