@@ -5,7 +5,7 @@ import "./VotingPage.scss";
 const VotingPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [position, setPosition] = useState([]);
+  const [position, setPosition] = useState([""]);
   const [candidate, setCandidate] = useState([]);
   const [index, setIndex] = useState(0);
   const [selectedCandidate, setSelectedCandidate] = useState("");
@@ -37,7 +37,6 @@ const VotingPage = () => {
 
   useEffect(() => {
     getCandidate();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [position]);
 
   useEffect(() => {
