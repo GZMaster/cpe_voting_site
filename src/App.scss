@@ -1,0 +1,16 @@
+.App {
+  display: block;
+
+  > .logo_div {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin: 24px 0 0 40px;
+  }
+
+  > .app_outlet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

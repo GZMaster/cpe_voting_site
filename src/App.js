@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.scss';
+import React from "react";
+import { Outlet } from "react-router-dom";
+import "./App.scss";
+import logo from "./assets/images/acesLogo_small.png";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="logo_div">
+        <img src={logo} alt="logo" />
+      </div>
+
+      <Outlet />
     </div>
   );
 }
