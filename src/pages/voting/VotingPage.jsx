@@ -10,6 +10,7 @@ const VotingPage = () => {
   const [index, setIndex] = useState(0);
   const [selectedCandidate, setSelectedCandidate] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
+  const [loading, isLoading] = useState(false);
 
   const getCandidate = async () => {
     const token = localStorage.getItem("token");
@@ -36,7 +37,7 @@ const VotingPage = () => {
 
   useEffect(() => {
     getCandidate();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [position]);
 
   useEffect(() => {
@@ -58,6 +59,8 @@ const VotingPage = () => {
 
   const submitVote = async () => {
     const token = localStorage.getItem("token");
+    isLoading(true);
+    setIsDisabled(true);
 
     const voteResponse = await fetch(
       `https://ill-frog-pea-coat.cyclic.app/api/v1/voting/`,
@@ -76,6 +79,8 @@ const VotingPage = () => {
     console.log(data);
 
     if (data.status === "success") {
+      isLoading(false);
+      setIsDisabled(false);
       console.log("Vote submitted successfully");
       setIndex(index + 1);
       if (index === location.state.data.length - 1) {
@@ -100,6 +105,8 @@ const VotingPage = () => {
         }
       }
     } else {
+      isLoading(false);
+      setIsDisabled(false);
       if (data.status === "fail") {
         alert("You have already voted for this position.");
         setIndex(index + 1);
@@ -143,6 +150,7 @@ const VotingPage = () => {
           <button onClick={clickHandler} disabled={isDisabled}>
             Vote
           </button>
+          {loading && <p>Loading...</p>}
         </div>
       </div>
     </div>
