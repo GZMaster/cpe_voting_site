@@ -148,5 +148,21 @@
       background-color: #030027;
       cursor: pointer;
     }
+
+    > p {
+      font-family: "Barlow";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 16px;
+      /* identical to box height, or 114% */
+
+      text-align: center;
+      letter-spacing: 0.2px;
+
+      /* Dark */
+
+      color: #13101a;
+    }
   }
 }
