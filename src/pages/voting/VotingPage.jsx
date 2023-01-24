@@ -39,7 +39,7 @@ const VotingPage = () => {
     getCandidate();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [position]);
+  }, []);
 
   useEffect(() => {
     setPosition(location.state.data[index]);
