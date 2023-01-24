@@ -10,7 +10,7 @@ const PositionPages = () => {
     const token = localStorage.getItem("token");
 
     const response = await fetch(
-      "http://127.0.0.1:3000/api/v1/voting/positions",
+      "https://ill-frog-pea-coat.cyclic.app/api/v1/voting/positions",
       {
         method: "GET",
         headers: {

@@ -15,7 +15,7 @@ const VotingPage = () => {
     const token = localStorage.getItem("token");
 
     const response = await fetch(
-      `http://127.0.0.1:3000/api/v1/voting?position=${position}&fields=name, getImage`,
+      `https://ill-frog-pea-coat.cyclic.app/api/v1/voting?position=${position}&fields=name, getImage`,
       {
         method: "GET",
         headers: {
@@ -58,14 +58,17 @@ const VotingPage = () => {
   const submitVote = async () => {
     const token = localStorage.getItem("token");
 
-    const voteResponse = await fetch(`http://127.0.0.1:3000/api/v1/voting/`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({ vote: selectedCandidate }),
-    });
+    const voteResponse = await fetch(
+      `https://ill-frog-pea-coat.cyclic.app/api/v1/voting/`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ vote: selectedCandidate }),
+      }
+    );
 
     const data = await voteResponse.json();
 
@@ -76,7 +79,7 @@ const VotingPage = () => {
       setIndex(index + 1);
       if (index === location.state.data.length - 1) {
         const voteComplete = await fetch(
-          "http://127.0.0.1:3000/api/v1/voting/votecomplete",
+          "https://ill-frog-pea-coat.cyclic.app/api/v1/voting/votecomplete",
           {
             method: "PATCH",
             headers: {
@@ -89,21 +92,21 @@ const VotingPage = () => {
         const voteResponseData = await voteComplete.json();
 
         if (voteResponseData.status === "success") {
-          navigate("/votingcomplete");
+          navigate("/");
         } else {
           console.log("Vote not submitted");
           submitVote();
         }
       }
     } else {
-      if (data.error.statusCode === 400) {
-        alert(data.message);
+      if (data.status === "fail") {
+        alert("You have already voted for this position.");
         setIndex(index + 1);
       }
       console.log("Vote not submitted");
 
       if (index === location.state.data.length - 1) {
-        navigate("/votingcomplete");
+        navigate("/");
       }
     }
   };
@@ -129,7 +132,7 @@ const VotingPage = () => {
                 }}
               >
                 <img
-                  src={`http://127.0.0.1:3000/api/v1/voting/image/${candidate._id}`}
+                  src={`https://ill-frog-pea-coat.cyclic.app/api/v1/voting/image/${candidate._id}`}
                   alt={candidate.name}
                 />
                 <p>{candidate.name}</p>

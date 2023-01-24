@@ -27,7 +27,7 @@ const LoginPage = () => {
       isLoading(true);
 
       const response = await fetch(
-        "http://127.0.0.1:3000/api/v1/voting/login",
+        "https://ill-frog-pea-coat.cyclic.app/api/v1/voting/login",
         {
           method: "POST",
           headers: {
