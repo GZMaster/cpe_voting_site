@@ -12,34 +12,32 @@ const VotingPage = () => {
   const [isDisabled, setIsDisabled] = useState(true);
   const [loading, isLoading] = useState(false);
 
-  const getCandidate = async () => {
-    const token = localStorage.getItem("token");
-
-    const response = await fetch(
-      `https://ill-frog-pea-coat.cyclic.app/api/v1/voting?position=${position}&fields=name, getImage`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-
-    const data = await response.json();
-
-    if (data.status === "success") {
-      setCandidate(data.data.candidates);
-    } else {
-      console.log("No data");
-    }
-  };
-
   useEffect(() => {
-    getCandidate();
+    const getCandidate = async () => {
+      const token = localStorage.getItem("token");
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+      const response = await fetch(
+        `https://ill-frog-pea-coat.cyclic.app/api/v1/voting?position=${position}&fields=name, getImage`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const data = await response.json();
+
+      if (data.status === "success") {
+        setCandidate(data.data.candidates);
+      } else {
+        console.log("No data");
+      }
+    };
+
+    getCandidate();
+  }, [position, location]);
 
   useEffect(() => {
     setPosition(location.state.data[index]);
