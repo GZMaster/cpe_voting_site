@@ -1,12 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./PositionPages.scss";
 
 const PositionPages = () => {
   const navigate = useNavigate();
+  const [positions, setPositions] = useState([]);
+
+  const getPosition = async () => {
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(
+      "http://127.0.0.1:3000/api/v1/voting/positions",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    const data = await response.json();
+
+    if (data) {
+      setPositions(data.data.positions);
+    }
+  };
+
+  useEffect(() => {
+    getPosition();
+  }, []);
 
   const handleClick = () => {
-    navigate("/voting");
+    navigate("/voting", { state: { data: positions } });
   };
 
   return (
@@ -18,34 +44,15 @@ const PositionPages = () => {
         </div>
         <div className="positionpages_body">
           <div className="positionpage_list">
-            <div className="positionpage_list_item">
-              <div className="positionpage_list_item_header">
-                <h3>President</h3>
-              </div>
-              <div className="positionpage_list_item_header">
-                <h3>V. President</h3>
-              </div>
-              <div className="positionpage_list_item_header">
-                <h3>Fin. Sec</h3>
-              </div>
-              <div className="positionpage_list_item_header">
-                <h3>Sec. Gen</h3>
-              </div>
-              <div className="positionpage_list_item_header">
-                <h3>Asst. Sec. Gen</h3>
-              </div>
-              <div className="positionpage_list_item_header">
-                <h3>Dir. of Socials</h3>
-              </div>
-              <div className="positionpage_list_item_header">
-                <h3>Dir. of Welfare</h3>
-              </div>
-              <div className="positionpage_list_item_header">
-                <h3>Dir. of Sports</h3>
-              </div>
-              <div className="positionpage_list_item_header">
-                <h3>P.R.O</h3>
-              </div>
+            <div className="positionpage_list_item_header">
+              {positions &&
+                positions.map((position) => {
+                  return (
+                    <div className="positionpage_list_item">
+                      <h3>{position}</h3>
+                    </div>
+                  );
+                })}
             </div>
           </div>
           <button onClick={handleClick}>Begin voting</button>

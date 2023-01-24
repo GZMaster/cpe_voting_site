@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
+
+.loginpage_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  width: 100vw;
+  background-color: white;
+}
+
+.loginpage_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 5%;
+
+  > .loginpage_header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    > h1 {
+      margin: 0;
+      font-family: "Barlow";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 43px;
+      line-height: 56px;
+      /* identical to box height, or 130% */
+
+      text-align: center;
+
+      /* Primary/002 */
+
+      color: #030027;
+    }
+
+    > h3 {
+      /* Subtitle 1/Regular */
+
+      font-family: "Barlow";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 19px;
+      line-height: 24px;
+      /* identical to box height, or 126% */
+
+      text-align: center;
+      letter-spacing: 0.2px;
+
+      /* Dark */
+
+      color: #13101a;
+    }
+  }
+
+  > .loginpage_body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    > h1 {
+      margin: 0;
+      font-family: "Barlow";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 43px;
+      line-height: 56px;
+      /* identical to box height, or 130% */
+
+      text-align: center;
+
+      /* Primary/002 */
+
+      color: #030027;
+    }
+
+    > .loginpage_form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+
+      > .input_wrapper {
+        position: relative;
+        border-color: #030027;
+        border-style: solid;
+        border-radius: 4px;
+        gap: 8px;
+        width: 308px;
+        height: 44px;
+        padding: 8px;
+
+        > .form_label {
+          position: absolute;
+          padding: 0 4px 0 4px;
+          top: -10px; /* or any value to move it up */
+          left: 10px; /* or any value to move it left or right */
+
+          font-family: "Barlow";
+          font-style: normal;
+          font-weight: 600;
+          font-size: 13px;
+          line-height: 16px;
+          /* identical to box height, or 123% */
+
+          letter-spacing: 1.2px;
+
+          /* Dark */
+
+          color: #13101a;
+          background-color: white;
+        }
+
+        .form_control {
+          width: 100%;
+          height: 100%;
+          border: none;
+          outline: transparent;
+
+          font-family: "Barlow";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 16px;
+          /* identical to box height, or 114% */
+
+          letter-spacing: 0.3px;
+
+          /* Gray-Dark-Mid */
+
+          color: #6a6d81;
+        }
+      }
+
+      > .form_button {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 12px 20px;
+        gap: 12px;
+
+        width: 158px;
+        height: 44px;
+
+        font-family: "Barlow";
+
+        border-radius: 4px;
+        border-color: transparent;
+        line-height: 20px;
+        letter-spacing: 1px;
+
+        font-style: normal;
+        font-weight: 600;
+        font-size: 0.8;
+      }
+
+      button:disabled {
+        background: #d4d2d8;
+        color: #6a6d81;
+        cursor: not-allowed;
+      }
+
+      button:not(:disabled) {
+        color: #f9dec9;
+        background-color: #030027;
+        cursor: pointer;
+      }
+    }
+  }
+}

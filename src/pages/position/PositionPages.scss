@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
+
+.positionpages_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  width: 100vw;
+  background-color: white;
+}
+
+.positionpages_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 5%;
+
+  > .positionpages_header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    > h1 {
+      margin: 0;
+      font-family: "Barlow";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 43px;
+      line-height: 56px;
+      /* identical to box height, or 130% */
+
+      text-align: center;
+
+      /* Primary/002 */
+
+      color: #030027;
+    }
+
+    > h3 {
+      /* Subtitle 1/Regular */
+
+      font-family: "Barlow";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 19px;
+      line-height: 24px;
+      /* identical to box height, or 126% */
+
+      text-align: center;
+      letter-spacing: 0.2px;
+
+      /* Dark */
+
+      color: #13101a;
+    }
+  }
+
+  > .positionpages_body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    > .positionpage_list {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      padding: 36px 12px 12px;
+      gap: 8px;
+
+      > .positionpage_list_item_header {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-column-gap: 16px;
+        grid-row-gap: 16px;
+
+        > .positionpage_list_item {
+          display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+          padding: 36px 12px 12px;
+          gap: 8px;
+
+          position: relative;
+          width: 168px;
+          height: 64px;
+          background: #f0f2f9;
+          border-radius: 4px;
+
+          > h3 {
+            position: absolute;
+            margin: 0;
+            top: 70%;
+            left: 10%;
+            font-family: "Barlow";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 16px;
+            letter-spacing: 0.3px;
+            color: #13101a;
+          }
+        }
+      }
+    }
+
+    > button {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 20px;
+      gap: 12px;
+
+      width: 158px;
+      height: 44px;
+
+      background-color: #030027;
+
+      color: #f9dec9;
+      cursor: pointer;
+
+      text-decoration: none;
+
+      font-family: "Barlow";
+      border-radius: 4px;
+      border-color: transparent;
+      line-height: 20px;
+      letter-spacing: 1px;
+
+      font-style: normal;
+      font-weight: 600;
+      font-size: 0.8;
+    }
+  }
+}

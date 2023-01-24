@@ -73,11 +73,11 @@ const LoginPage = () => {
   return (
     <div className="loginpage_container">
       <div className="loginpage_wrapper">
-        <div className="loginpage_title">
+        <div className="loginpage_header">
           <h1>Welcom to ...</h1>
           <h3>...</h3>
         </div>
-        <div className="loginpage_form">
+        <div className="loginpage_body">
           <h1>Enter your matriculation number to begin</h1>
           <form className="loginpage_form" onSubmit={handleSubmit}>
             <div className="input_wrapper">
