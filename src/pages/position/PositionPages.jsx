@@ -6,28 +6,28 @@ const PositionPages = () => {
   const navigate = useNavigate();
   const [positions, setPositions] = useState([]);
 
-  const getPosition = async () => {
-    const token = localStorage.getItem("token");
-
-    const response = await fetch(
-      "https://ill-frog-pea-coat.cyclic.app/api/v1/voting/positions",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-
-    const data = await response.json();
-
-    if (data) {
-      setPositions(data.data.positions);
-    }
-  };
-
   useEffect(() => {
+    const getPosition = async () => {
+      const token = localStorage.getItem("token");
+
+      const response = await fetch(
+        "https://ill-frog-pea-coat.cyclic.app/api/v1/voting/positions",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const data = await response.json();
+
+      if (data) {
+        setPositions(data.data.positions);
+      }
+    };
+
     getPosition();
   }, []);
 
