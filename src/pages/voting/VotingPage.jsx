@@ -37,6 +37,8 @@ const VotingPage = () => {
 
   useEffect(() => {
     getCandidate();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [position]);
 
   useEffect(() => {
