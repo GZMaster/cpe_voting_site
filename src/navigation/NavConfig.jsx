@@ -5,6 +5,7 @@ import MainPage from "../pages/MainPage";
 import LoginPage from "../pages/login/LoginPage";
 import PositionPages from "../pages/position/PositionPages";
 import VotingPage from "../pages/voting/VotingPage";
+import VotingCompletedPage from "../pages/votingcomplete/VotingCompletedPage";
 
 const NavConfig = () => {
   return (
@@ -14,6 +15,7 @@ const NavConfig = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/voting" element={<VotingPage />} />
         <Route path="/position" element={<PositionPages />} />
+        <Route path="/votingcomplete" element={<VotingCompletedPage />} />
       </Route>
     </Routes>
   );

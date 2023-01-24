@@ -9,12 +9,13 @@ const VotingPage = () => {
   const [candidate, setCandidate] = useState([]);
   const [index, setIndex] = useState(0);
   const [selectedCandidate, setSelectedCandidate] = useState("");
+  const [isDisabled, setIsDisabled] = useState(true);
 
   const getCandidate = async () => {
     const token = localStorage.getItem("token");
 
     const response = await fetch(
-      `http://127.0.0.1:3000/api/v1/voting?position=${position}&fields=name, picture`,
+      `http://127.0.0.1:3000/api/v1/voting?position=${position}&fields=name, getImage`,
       {
         method: "GET",
         headers: {
@@ -88,7 +89,7 @@ const VotingPage = () => {
         const voteResponseData = await voteComplete.json();
 
         if (voteResponseData.status === "success") {
-          navigate("/");
+          navigate("/votingcomplete");
         } else {
           console.log("Vote not submitted");
           submitVote();
@@ -102,7 +103,7 @@ const VotingPage = () => {
       console.log("Vote not submitted");
 
       if (index === location.state.data.length - 1) {
-        navigate("/");
+        navigate("/votingcomplete");
       }
     }
   };
@@ -117,21 +118,27 @@ const VotingPage = () => {
         <div className="votingpage_body">
           <form className="votingpage_list">
             {candidate.map((candidate) => (
-              <div key={candidate._id} className="candidate_card">
-                <input
-                  type="radio"
-                  name="candidate"
-                  value={candidate._id}
-                  onChange={(e) => setSelectedCandidate(e.target.value)}
-                  checked={selectedCandidate === candidate._id}
+              <div
+                key={candidate._id}
+                className={`candidate_card ${
+                  selectedCandidate === candidate._id ? "selected" : ""
+                }`}
+                onClick={() => {
+                  setSelectedCandidate(candidate._id);
+                  setIsDisabled(false);
+                }}
+              >
+                <img
+                  src={`http://127.0.0.1:3000/api/v1/voting/image/${candidate._id}`}
+                  alt={candidate.name}
                 />
-                <img src={candidate.picture} alt={candidate.name} />
                 <p>{candidate.name}</p>
               </div>
             ))}
-
-            <button onClick={clickHandler}>Vote</button>
           </form>
+          <button onClick={clickHandler} disabled={isDisabled}>
+            Vote
+          </button>
         </div>
       </div>
     </div>
