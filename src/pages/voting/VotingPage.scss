@@ -110,7 +110,8 @@
       }
 
       > .candidate_card.selected {
-        border: 2px solid blue;
+        border: 2px solid #030027;
+        border-radius: 4px;
       }
     }
 
@@ -164,5 +165,11 @@
 
       color: #13101a;
     }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .votingpage_wrapper {
+    gap: 22px;
   }
 }

@@ -74,8 +74,7 @@ const LoginPage = () => {
     <div className="loginpage_container">
       <div className="loginpage_wrapper">
         <div className="loginpage_header">
-          <h1>Welcom to ...</h1>
-          <h3>...</h3>
+          <h1>Welcom to ACES Voting Site</h1>
         </div>
         <div className="loginpage_body">
           <h1>Enter your matriculation number to begin</h1>

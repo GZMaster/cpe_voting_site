@@ -97,7 +97,7 @@ const VotingPage = () => {
         const voteResponseData = await voteComplete.json();
 
         if (voteResponseData.status === "success") {
-          navigate("/");
+          navigate("/votingcomplete");
         } else {
           console.log("Vote not submitted");
           submitVote();
@@ -113,7 +113,7 @@ const VotingPage = () => {
       console.log("Vote not submitted");
 
       if (index === location.state.data.length - 1) {
-        navigate("/");
+        navigate("/votingcomplete");
       }
     }
   };
@@ -122,8 +122,8 @@ const VotingPage = () => {
     <div className="votingpage_container">
       <div className="votingpage_wrapper">
         <div className="votingpage_header">
-          <h1>For the office of the ...</h1>
-          <h3>There are x candidates. Vote for your preferred candidate.</h3>
+          <h1>For {position}</h1>
+          {/* <h3>There are x candidates. Vote for your preferred candidate.</h3> */}
         </div>
         <div className="votingpage_body">
           <form className="votingpage_list">

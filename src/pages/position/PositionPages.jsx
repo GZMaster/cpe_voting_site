@@ -39,8 +39,8 @@ const PositionPages = () => {
     <div className="positionpages_container">
       <div className="positionpages_wrapper">
         <div className="positionpages_header">
-          <h1>...</h1>
-          <h3>You’ll be voting for a total of 9 offices</h3>
+          {/* <h1>...</h1> */}
+          <h1>You’ll be voting for a total of 9 offices</h1>
         </div>
         <div className="positionpages_body">
           <div className="positionpage_list">
