@@ -77,6 +77,7 @@ const VotingPage = () => {
   useEffect(() => {
     setPosition(location.state.data[index]);
     getVotedPosition();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location, index]);
 
   const clickHandler = (e) => {
