@@ -50,7 +50,7 @@ const LoginPage = () => {
       } else {
         isLoading(false);
         setIsSuccessModalOpen(true);
-        setSuccessMessage(`Data submission failed! ${data.message}`);
+        setSuccessMessage(`Data submission failed!`);
       }
     } catch (error) {
       isLoading(false);
@@ -74,7 +74,7 @@ const LoginPage = () => {
     <div className="loginpage_container">
       <div className="loginpage_wrapper">
         <div className="loginpage_header">
-          <h1>Welcom to ACES Voting Site</h1>
+          <h1>Welcome to ACES Voting Site</h1>
         </div>
         <div className="loginpage_body">
           <h1>Enter your matriculation number to begin</h1>
