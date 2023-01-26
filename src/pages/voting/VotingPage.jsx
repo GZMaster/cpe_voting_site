@@ -50,7 +50,7 @@ const VotingPage = () => {
     }
 
     const response = await fetch(
-      `http://127.0.0.1:3000/api/v1/voting/getposition`,
+      `https://ill-frog-pea-coat.cyclic.app/api/v1/voting/getposition`,
       {
         method: "POST",
         headers: {
