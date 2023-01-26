@@ -34,7 +34,6 @@ const VotingPage = () => {
         setCandidate(data.data.candidates);
         isLoading(false);
       } else {
-        console.log("No data");
         isLoading(false);
       }
     };
@@ -46,6 +45,7 @@ const VotingPage = () => {
     const token = localStorage.getItem("token");
 
     if (index > location.state.data.length - 1 || index < 0) {
+      console.log("No more position");
       navigate("/votingcomplete");
     }
 
@@ -64,8 +64,6 @@ const VotingPage = () => {
     );
 
     const data = await response.json();
-
-    console.log(data);
 
     if (data.status === "success") {
       return;
@@ -111,8 +109,6 @@ const VotingPage = () => {
     );
 
     const data = await voteResponse.json();
-
-    console.log(data);
 
     if (data.status === "success") {
       isLoading(false);
