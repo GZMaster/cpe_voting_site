@@ -13,6 +13,7 @@ const VotingPage = () => {
   const [loading, isLoading] = useState(false);
 
   useEffect(() => {
+    isLoading(true);
     const getCandidate = async () => {
       const token = localStorage.getItem("token");
 
@@ -31,16 +32,52 @@ const VotingPage = () => {
 
       if (data.status === "success") {
         setCandidate(data.data.candidates);
+        isLoading(false);
       } else {
         console.log("No data");
+        isLoading(false);
       }
     };
 
     getCandidate();
   }, [position, location]);
 
+  const getVotedPosition = async () => {
+    const token = localStorage.getItem("token");
+
+    if (index > location.state.data.length - 1 || index < 0) {
+      navigate("/votingcomplete");
+    }
+
+    const response = await fetch(
+      `https://ill-frog-pea-coat.cyclic.app/api/v1/voting/getposition`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          position,
+        }),
+      }
+    );
+
+    const data = await response.json();
+
+    console.log(data);
+
+    if (data.status === "success") {
+      return;
+    } else {
+      setIndex(index + 1);
+    }
+  };
+
   useEffect(() => {
     setPosition(location.state.data[index]);
+    getVotedPosition();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location, index]);
 
   const clickHandler = (e) => {
@@ -69,7 +106,7 @@ const VotingPage = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ vote: selectedCandidate }),
+        body: JSON.stringify({ vote: selectedCandidate, position }),
       }
     );
 
