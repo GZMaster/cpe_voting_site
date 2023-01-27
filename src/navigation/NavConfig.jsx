@@ -16,6 +16,7 @@ const NavConfig = () => {
         <Route path="/voting" element={<VotingPage />} />
         <Route path="/position" element={<PositionPages />} />
         <Route path="/votingcomplete" element={<VotingCompletedPage />} />
+        <Route path="*" element={<LoginPage />} />
       </Route>
     </Routes>
   );
