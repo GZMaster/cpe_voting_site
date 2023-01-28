@@ -23,6 +23,8 @@ const PositionPages = () => {
 
       const data = await response.json();
 
+      console.log(data.data.positions);
+
       if (data) {
         setPositions(data.data.positions);
       }

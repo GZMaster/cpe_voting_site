@@ -91,11 +91,12 @@
           height: 64px;
           background: #f0f2f9;
           border-radius: 4px;
+          overflow: none;
 
           > h3 {
             position: absolute;
             margin: 0;
-            top: 70%;
+            top: 65%;
             left: 10%;
             font-family: "Barlow";
             font-style: normal;
@@ -173,8 +174,8 @@
           grid-row-gap: 16px;
 
           .positionpage_list_item {
-            width: 100px;
-            height: 32px;
+            width: 9rem;
+            height: 4rem;
           }
         }
       }

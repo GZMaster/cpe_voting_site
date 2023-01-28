@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./VotingPage.scss";
 
 const VotingPage = () => {
-  const location = useLocation();
   const navigate = useNavigate();
   const [position, setPosition] = useState([""]);
   const [candidate, setCandidate] = useState([]);
@@ -12,10 +11,26 @@ const VotingPage = () => {
   const [isDisabled, setIsDisabled] = useState(true);
   const [loading, isLoading] = useState(false);
 
+  const positiondata = [
+    "PRESIDENT",
+    "VICE PRESIDENT",
+    "SECRETARY GENERAL",
+    "ASSISTANT SEC. GENERAL",
+    "FINANCIAL SECRETARY",
+    "DIRECTOR OF WELFARE",
+    "DIRECTOR OF SOCIALS",
+    "DIRECTOR OF SPORTS",
+    "P.R.O.",
+  ];
+
   useEffect(() => {
     isLoading(true);
     const getCandidate = async () => {
       const token = localStorage.getItem("token");
+
+      if (position === "") {
+        return;
+      }
 
       const response = await fetch(
         `https://ill-frog-pea-coat.cyclic.app/api/v1/voting?position=${position}&fields=name, getImage`,
@@ -39,15 +54,21 @@ const VotingPage = () => {
     };
 
     getCandidate();
-  }, [position, location]);
+  }, [position]);
 
   const getVotedPosition = async () => {
     const token = localStorage.getItem("token");
 
-    if (index > location.state.data.length - 1 || index < 0) {
+    if (index > positiondata.length - 1 || index < 0) {
       console.log("No more position");
       navigate("/votingcomplete");
     }
+
+    if (position === "") {
+      return setIndex(index + 1);
+    }
+
+    console.log(position);
 
     const response = await fetch(
       `https://ill-frog-pea-coat.cyclic.app/api/v1/voting/getposition`,
@@ -73,10 +94,14 @@ const VotingPage = () => {
   };
 
   useEffect(() => {
-    setPosition(location.state.data[index]);
+    setPosition(positiondata[index]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [index]);
+
+  useEffect(() => {
     getVotedPosition();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location, index]);
+  }, [position]);
 
   const clickHandler = (e) => {
     e.preventDefault();
@@ -84,7 +109,7 @@ const VotingPage = () => {
     if (!selectedCandidate) {
       alert("Please select a candidate before continuing.");
     } else {
-      if (index !== location.state.data.length) {
+      if (index !== positiondata.length) {
         submitVote();
       } else {
       }
@@ -115,7 +140,7 @@ const VotingPage = () => {
       setIsDisabled(false);
       console.log("Vote submitted successfully");
       setIndex(index + 1);
-      if (index === location.state.data.length - 1) {
+      if (index === positiondata.length - 1) {
         const voteComplete = await fetch(
           "https://ill-frog-pea-coat.cyclic.app/api/v1/voting/votecomplete",
           {
@@ -145,7 +170,7 @@ const VotingPage = () => {
       }
       console.log("Vote not submitted");
 
-      if (index === location.state.data.length - 1) {
+      if (index === positiondata.length - 1) {
         navigate("/votingcomplete");
       }
     }
@@ -155,7 +180,7 @@ const VotingPage = () => {
     <div className="votingpage_container">
       <div className="votingpage_wrapper">
         <div className="votingpage_header">
-          <h1>For {position}</h1>
+          <h1>The office of the {position}</h1>
           {/* <h3>There are x candidates. Vote for your preferred candidate.</h3> */}
         </div>
         <div className="votingpage_body">

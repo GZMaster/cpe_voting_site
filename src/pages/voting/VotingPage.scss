@@ -32,13 +32,9 @@
       font-weight: 600;
       font-size: 43px;
       line-height: 56px;
-      /* identical to box height, or 130% */
-
       text-align: center;
-
-      /* Primary/002 */
-
       color: #030027;
+      text-transform: lowercase !important;
     }
 
     > h3 {
@@ -84,8 +80,11 @@
         gap: 12px;
         width: 30%;
         height: fit-content;
+        overflow: none;
         background: #f0f2f9;
         border-radius: 4px;
+        width: 10.75rem;
+        height: 14.25rem;
 
         > p {
           margin: 0;
@@ -100,9 +99,8 @@
 
         > img {
           width: 100%;
-          height: 90%;
-
-          /* Primary/002 */
+          height: 80%;
+          object-fit: cover;
 
           background: #030027;
           border-radius: 4px;

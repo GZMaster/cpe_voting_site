@@ -47,10 +47,15 @@ const LoginPage = () => {
         setIsSuccessModalOpen(true);
         setSuccessMessage("Data submitted successfully!");
         navigate("/position");
-      } else {
+      }
+      if (data.status === "fail") {
         isLoading(false);
         setIsSuccessModalOpen(true);
-        setSuccessMessage(`Data submission failed!`);
+        if (response.status === 405) {
+          setSuccessMessage("You have already voted");
+        } else {
+          setSuccessMessage(`Incorrect matric number or password`);
+        }
       }
     } catch (error) {
       isLoading(false);
