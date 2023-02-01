@@ -56,6 +56,14 @@ const VotingPage = () => {
     getCandidate();
   }, [position]);
 
+  useEffect(() => {
+    if (isLoading === false) {
+      setIsDisabled(false);
+    } else {
+      setIsDisabled(true);
+    }
+  }, [isLoading]);
+
   const getVotedPosition = async () => {
     const token = localStorage.getItem("token");
 
