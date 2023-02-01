@@ -1,0 +1,2 @@
+# Redirect all requests to `index.html` to allow client-side routing in React
+/*    /index.html   200
