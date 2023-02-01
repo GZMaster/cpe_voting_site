@@ -60,15 +60,12 @@ const VotingPage = () => {
     const token = localStorage.getItem("token");
 
     if (index > positiondata.length - 1 || index < 0) {
-      console.log("No more position");
       navigate("/votingcomplete");
     }
 
     if (position === "") {
       return setIndex(index + 1);
     }
-
-    console.log(position);
 
     const response = await fetch(
       `https://ill-frog-pea-coat.cyclic.app/api/v1/voting/getposition`,
@@ -138,7 +135,6 @@ const VotingPage = () => {
     if (data.status === "success") {
       isLoading(false);
       setIsDisabled(false);
-      console.log("Vote submitted successfully");
       setIndex(index + 1);
       if (index === positiondata.length - 1) {
         const voteComplete = await fetch(
@@ -157,7 +153,6 @@ const VotingPage = () => {
         if (voteResponseData.status === "success") {
           navigate("/votingcomplete");
         } else {
-          console.log("Vote not submitted");
           submitVote();
         }
       }
@@ -168,7 +163,6 @@ const VotingPage = () => {
         alert("You have already voted for this position.");
         setIndex(index + 1);
       }
-      console.log("Vote not submitted");
 
       if (index === positiondata.length - 1) {
         navigate("/votingcomplete");
