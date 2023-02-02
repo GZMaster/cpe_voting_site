@@ -15,6 +15,12 @@ const LoginPage = () => {
     password: "",
   });
 
+  useEffect(() => {
+    if (isDisabled) {
+      return;
+    }
+  }, [isDisabled]);
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setForm({ ...form, [name]: value });
@@ -106,7 +112,7 @@ const LoginPage = () => {
                 required
               />
             </div>
-            <button className="form_button" type="submit" disabled={isDisabled}>
+            <button className="form_button" type="submit" disabled={true}>
               Log In
             </button>
           </form>
